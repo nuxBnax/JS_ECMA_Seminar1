@@ -49,9 +49,7 @@ console.log(mergeArrays(array, array2));
 // 2. Задача: Напишите функцию calculateAverage, которая принимает
 // массив чисел в качестве аргумента и возвращает среднее значение
 // этих чисел.
-// 3. Напишите функцию capitalizeFirstLetter, которая принимает строку в
-// качестве аргумента и возвращает новую строку, в которой первая
-// буква каждого слова является заглавной.
+
 
 function getEvenNumbers(array) {
     return array.filter((element) => element % 2 === 0);
@@ -71,6 +69,11 @@ function calculateAverage(array) {
 
 console.log(calculateAverage([1, 2, 3, 2, 4, 1, 5]));
 
+
+// 3. Напишите функцию capitalizeFirstLetter, которая принимает строку в
+// качестве аргумента и возвращает новую строку, в которой первая
+// буква каждого слова является заглавной.
+
 function capitalizeFirstLetter(str) {
     const str1 = str.split(' ');
     return str1.map(element => element.charAt(0).toUpperCase() + element.slice(1)).join(' ');
@@ -80,3 +83,81 @@ console.log(capitalizeFirstLetter('наш accumulator начинает с 0'));
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods
 
+
+// Задание 3 (тайминг 20 минут)
+// 1. Напишите функцию createCalculator, которая принимает начальное
+// значение и возвращает объект с двумя методами: add и subtract.
+// Метод add должен увеличивать значение на переданное число, а
+// метод subtract должен уменьшать значение на переданное число.
+// Значение должно быть доступно только через методы объекта, а не
+// напрямую.
+
+function createCalculator(initialValue) {
+    function add(argument) {
+        return initialValue += argument;
+    }
+    function subtract(argument) {
+        return initialValue -= argument;
+    }
+    return { add, subtract };
+}
+const calc = createCalculator(45);
+console.log(calc.add(32));
+console.log(calc.subtract(10));
+
+
+// Задание 4 (тайминг 15 минут)
+// 1. Напишите функцию createGreeting, которая принимает имя
+// пользователя и возвращает функцию, которая будет возвращать
+// приветствие с использованием этого имени.
+
+// // Пример использования:
+// const greeting = createGreeting('John');
+// console.log(greeting()); // "Hello, John!"
+
+function createGreeting(userName) {
+    return () => `Hello, ${userName}`;
+}
+const greeting = createGreeting('John');
+
+console.log(greeting());
+
+
+// Задание 5 (тайминг 15 минут)
+// 1. Задача: Напишите функцию createPasswordChecker, которая
+// принимает минимальную длину пароля в качестве аргумента и
+// возвращает функцию для проверки введенного пароля.
+// Возвращаемая функция должна принимать пароль и возвращать
+// true, если его длина больше или равна заданной длине,  
+// в противном случае - false. 
+ 
+// Пример использования:
+
+function createPasswordChecker (minLengthPassword) {
+    return (password) => password.length >= minLengthPassword;
+}
+
+const isPasswordValid = createPasswordChecker(8);
+
+// console.log(isPasswordValid('password')); // true
+// console.log(isPasswordValid('secret')); // false
+console.log(createPasswordChecker(8)('passworawdawdd'));
+
+
+
+// Задание 6 (тайминг 25 минут)
+// 1. Напишите рекурсивную функцию sumDigits, которая принимает
+// положительное целое число в качестве аргумента и возвращает
+// сумму его цифр.
+ 
+// // Пример использования:
+console.log(sumDigits(123)); // 6 (1 + 2 + 3)
+console.log(sumDigits(112456456)); // 39 (4 + 5 + 6 + 7 + 8 + 9)
+
+function sumDigits(number) {
+    if (number < 10) {
+        return number;
+    } else {
+        return (number % 10) + sumDigits(Math.floor(number / 10));
+    }
+}
