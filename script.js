@@ -93,11 +93,12 @@ console.log(capitalizeFirstLetter('наш accumulator начинает с 0'));
 // напрямую.
 
 function createCalculator(initialValue) {
+    const value = initialValue;
     function add(argument) {
-        return initialValue += argument;
+        return value += argument;
     }
     function subtract(argument) {
-        return initialValue -= argument;
+        return value -= argument;
     }
     return { add, subtract };
 }
